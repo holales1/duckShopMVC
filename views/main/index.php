@@ -88,7 +88,7 @@
                     
         ?>
         <div class="product-item">
-            <form method="post" action="shopCar.php?action=add&ProductID=<?php echo $product_array[$aNumber]["ProductID"]; ?>">
+            <form method="post" action="<?php echo constant('URL')?>shopCar/addItem/<?php echo $product_array[$aNumber]["ProductID"]; ?>">
                 <div class="product-image">
                     <img src="<?php echo constant('URL')?>public/img/<?php echo $product_array[$aNumber]["image"]; ?>">
                 </div>
