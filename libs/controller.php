@@ -5,6 +5,7 @@ class Controller{
     function __construct()
     {
         $this->view =new View();
+        $this->function=new Functions;
     }
 
     function loadModel($model){

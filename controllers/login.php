@@ -12,8 +12,7 @@ class Login extends Controller{
     function loginUser(){
         if(isset($_SESSION['UserID'])){
             $_SESSION['message'] = "You are already log in";
-            header("HTTP/1.1 303 See Other");
-            header("Location: http://localhost/duckShopMVC/login");
+            $this->function->redirect_to('login');
         }else{
         // START FORM PROCESSING
             if (isset($_POST['submit'])) { // Form has been submitted.
@@ -25,8 +24,7 @@ class Login extends Controller{
                     $_SESSION['email'] = $user[0]['email'];
                     $_SESSION['isAdmin'] = $user[0]['isAdmin'];
                     $_SESSION['message'] = "You are now log in.";
-                    header("HTTP/1.1 303 See Other");
-                    header("Location: http://localhost/duckShopMVC/login");
+                    $this->function->redirect_to('login');
                 } else {
                     // username/password combo was not found in the database
                     $_SESSION['message'] = "Username/password combination incorrect.<br />
@@ -45,8 +43,7 @@ class Login extends Controller{
 		
         session_destroy();
         
-        header("HTTP/1.1 303 See Other");
-        header("Location: http://localhost/duckShopMVC/login");
+        $this->function->redirect_to('login');
 		
     }
 
@@ -60,13 +57,12 @@ class Login extends Controller{
         $result=$this->model->createUser($email,$password);
         if ($result) {
             $_SESSION['message'] = "User created.";
-            header("HTTP/1.1 303 See Other");
-            header("Location: http://localhost/duckShopMVC/login");
+
         } else {
             $_SESSION['message'] = "User not created.";
-            header("HTTP/1.1 303 See Other");
-            header("Location: http://localhost/duckShopMVC/login");
+
         }
+        $this->function->redirect_to('login');
     }
 
 

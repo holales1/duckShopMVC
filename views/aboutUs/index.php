@@ -1,22 +1,18 @@
-
-<?php
-if (isset($_POST['submit'])) {
-    $descriptionSQL=$_POST['description'];
-    $AddressSQL=$_POST['Address'];
-    $phoneNumberSQL=$_POST['phoneNumber'];
-    $openHourSQL=$_POST['openHour']; 
-    $result=$db_handle->insertRow("UPDATE companies SET description='$descriptionSQL',Address='$AddressSQL',phoneNumber='$phoneNumberSQL',openHour='$openHourSQL' WHERE CompanyID=1");
-}
-?>
 <div>
     <div class="divAboutUs">
+        <?php
+            if(isset($_SESSION['message'])){
+                echo $_SESSION['message'];
+                unset($_SESSION['message']);
+            }
+        ?>
         <h2>About US</h2>
         <div>
             <?php
                 $about_us = $this->aboutUs;
                 $description=$about_us[0]['description'];
                 if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']==1  ){
-                    echo "<form action='' id='updateAboutUs' method='post'>";
+                    echo "<form action=".constant('URL')."aboutUs/updateAboutUs id='updateAboutUs' method='post'>";
                     echo "<input type='text' id='description' name='description' value='$description'><br>";
                 }else{ 
                     echo $about_us[0]['description']; 

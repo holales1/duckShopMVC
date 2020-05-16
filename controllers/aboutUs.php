@@ -13,5 +13,11 @@ class AboutUs extends Controller{
 
         $this->view->render('aboutUs/index');
     }
+
+    function updateAboutUs(){
+        $arrayPost=$_POST;
+        $this->model->updateCompany($arrayPost);
+        $this->function->redirect_to('aboutUs');
+    }
 }
 ?>

@@ -31,7 +31,7 @@
                 if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']==1  ){
                 ?>
                 
-                <form method="post" action="updateProductDay.php">
+                <form method="post" action="<?php echo constant('URL')?>main/updateProductDay">
                     <div class="product-image">
                         <img src="<?php echo constant('URL')?>public/img/<?php echo $product_of_day[0]["image"]; ?>">
                     </div>
@@ -113,7 +113,7 @@
                 foreach($product_array as $aNumber=> $value){
         ?>
         <div class="product-item">
-            <form method="post" action="updateProduct.php?ProductID=<?php echo $product_array[$aNumber]["ProductID"]; ?>">
+            <form method="post" action="<?php echo constant('URL')?>main/updatePage/<?php echo $product_array[$aNumber]["ProductID"]; ?>">
                 <div class="product-image">
                     <img src="<?php echo constant('URL')?>public/img/<?php echo $product_array[$aNumber]["image"]; ?>">
                 </div>

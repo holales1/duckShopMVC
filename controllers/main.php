@@ -1,5 +1,6 @@
 <?php
 
+
 class Main extends Controller{
     function __construct(){
         parent::__construct();
@@ -31,8 +32,48 @@ class Main extends Controller{
         }else{
             $this->model->addDuck($ProductID);
         }
-        header("HTTP/1.1 303 See Other");
-        header("Location: http://localhost/duckShopMVC/main");
+        $this->function->redirect_to('main');
+        
+    }
+
+    public function updatePage($productID){
+        $this->view->product=$this->model->getDuckById($productID[0]);
+        $this->view->render('main/updateProduct');
+    }
+
+    public function updateProductDay(){
+        $this->view->productArrayDay=$this->model->readDuckOferrs();
+        $this->view->allProducts=$this->model->readDuck();
+        $this->view->render('main/updateProductDay');
+    }
+
+    public function registerProduct(){
+        $productID=$_POST['ProductID'];
+        $description=$_POST['description'];
+        $price=$_POST['price'];
+        $img=$_FILES['imgfile'];
+
+        if(($_FILES['imgfile']['type']=="image/jpeg" ||
+            $_FILES['imgfile']['type']=="image/pjpeg" ||
+            $_FILES['imgfile']['type']=="image/gif" ||
+            $_FILES['imgfile']['type']=="image/png" ||
+            $_FILES['imgfile']['type']=="image/jpg")&& (
+            $_FILES['imgfile']['size']< 3000000
+            )){
+            if ($_FILES['imgfile']['error']>0){
+                $_SESSION["message"]= "Error: ". $_FILES['imgfile']['error'];
+            }else{
+                if (file_exists("upload/".$_FILES['imgfile']['name'])){
+                    $_SESSION["message"]="can't upload: ". $_FILES['imgfile']['name']. " Exists";
+                }else{
+                    move_uploaded_file($_FILES['imgfile']['tmp_name'],
+                        constant('PUBLIC_PATH')."img/".$_FILES['imgfile']['name']);
+                    $this->model->updateDuck($productID,$description,$price,$img);
+                    $this->function->redirect_to('main');
+                }
+            }
+        } 
+
     }
 
 }

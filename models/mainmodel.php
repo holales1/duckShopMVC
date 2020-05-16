@@ -38,4 +38,18 @@ class mainModel extends Model{
         $offer = $this->db->insertRow("UPDATE products SET isAvaliable='0' WHERE ProductID='$ProductID'");
         $_SESSION['message'] = "Product added.";
     }
+
+    function updateDuck($productID,$description,$price,$img){
+        $result = $this->db->insertRow("UPDATE products SET description='$description',price='$price',image='{$_FILES["imgfile"]["name"]}' WHERE ProductID='$productID");
+        if($result){
+            $_SESSION["message"]="Product updated";
+        }else{
+            $_SESSION["message"]="Product not updated";
+        }
+    }
+
+    function readDuckOferrs(){
+        $product_array = $this->db->runQuery("SELECT * FROM product_of_the_day");
+        return $product_array;
+    }
 }

@@ -20,10 +20,10 @@ class Contact extends Controller{
         if (preg_match($regexp,$email)) {
             mail($mymail,$subject,$body,"From: $email\n");
             $_SESSION['message'] = "Message sended.";
-            header("HTTP/1.1 303 See Other");
-            header("Location: http://localhost/duckShopMVC/contact");
+            $this->function->redirect_to('contact');
         }else{
             $_SESSION['message'] = "Message not sended.";
+            $this->function->redirect_to('contact');
 
         }
     }

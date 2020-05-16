@@ -11,12 +11,8 @@ class aboutUsModel extends Model{
         return $about_us;
     }
 
-    public function readDuckOfTheDay(){
-        $dayOfWeek = date("l", strtotime(date("Y-m-d")));
-        $offer = $this->db->runQuery("SELECT percentage, ProductID FROM product_of_the_day WHERE dayOfWeek='$dayOfWeek'");
-        $ProductID=$offer[0]["ProductID"];
-        $product_of_day = $this->db->runQuery("SELECT * FROM products WHERE ProductID= $ProductID");
-        $product_of_day[0]["percentage"]=$offer[0]["percentage"];
-        return $product_of_day;
+    public function updateCompany($arrayPost){
+        $result=$this->db->insertRow("UPDATE companies SET description='{$arrayPost['description']}',Address='{$arrayPost['Address']}',phoneNumber='{$arrayPost['phoneNumber']}',openHour='{$arrayPost['openHour']}' WHERE CompanyID=1");
+        $_SESSION['message']="Information updated";
     }
 }
