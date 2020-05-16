@@ -29,6 +29,7 @@ class Login extends Controller{
                     // username/password combo was not found in the database
                     $_SESSION['message'] = "Username/password combination incorrect.<br />
                         Please make sure your caps lock key is off and try again.";
+                    $this->function->redirect_to('login');
                 }
             }
         }
