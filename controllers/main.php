@@ -47,6 +47,15 @@ class Main extends Controller{
         $this->view->render('main/updateProductDay');
     }
 
+    public function updateProductDaySave(){
+        $dayOfWeekSQL=$_POST['dayOfWeek'];
+        $percentageSQL=$_POST['percentage'];
+        $ProductIDSQL=$_POST['ProductID'];
+        $this->model->saveProductDay($ProductIDSQL,$percentageSQL,$dayOfWeekSQL);
+        $this->function->redirect_to('main');
+
+    }
+
     public function registerProduct(){
         $productID=$_POST['ProductID'];
         $description=$_POST['description'];
@@ -76,5 +85,36 @@ class Main extends Controller{
 
     }
 
+    public function newProductPage(){
+        $this->view->render('main/newProduct');
+    }
+
+    public function saveNewProductPage(){
+        $productID=$this->model->getMaxProductID()[0]["MAX(ProductID)"] +1;
+        $description=$_POST['description'];
+        $price=$_POST['price'];
+        $img=$_FILES['imgfile'];
+
+        if(($_FILES['imgfile']['type']=="image/jpeg" ||
+            $_FILES['imgfile']['type']=="image/pjpeg" ||
+            $_FILES['imgfile']['type']=="image/gif" ||
+            $_FILES['imgfile']['type']=="image/png" ||
+            $_FILES['imgfile']['type']=="image/jpg")&& (
+            $_FILES['imgfile']['size']< 3000000
+            )){
+            if ($_FILES['imgfile']['error']>0){
+                $_SESSION["message"]= "Error: ". $_FILES['imgfile']['error'];
+            }else{
+                if (file_exists("upload/".$_FILES['imgfile']['name'])){
+                    $_SESSION["message"]="can't upload: ". $_FILES['imgfile']['name']. " Exists";
+                }else{
+                    move_uploaded_file($_FILES['imgfile']['tmp_name'],
+                        constant('PUBLIC_PATH')."img/".$_FILES['imgfile']['name']);
+                    $this->model->saveDuck($productID,$description,$price);
+                    $this->function->redirect_to('main');
+                }
+            }
+        } 
+    }
 }
 ?>

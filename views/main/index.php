@@ -149,7 +149,7 @@
             }
         ?>
         <div>
-            <form method="post" action="newProduct.php">
+            <form method="post" action="<?php echo constant('URL')?>main/newProductPage">
                 <input type="submit" value="Add new product" class="addBtn" />
             </form>
         </div>

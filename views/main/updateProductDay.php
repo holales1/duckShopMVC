@@ -12,7 +12,7 @@
             foreach($daysOfWeek as $aNumber=> $value){
     ?>
     <tr>
-        <form action="" method="post">
+        <form action="<?php echo constant('URL')?>main/updateProductDaySave" method="post">
           <td><input type="text" id="dayOfWeek" name="dayOfWeek" readonly="readonly" value="<?php echo $daysOfWeek[$aNumber]["dayOfWeek"]; ?>"></td>
           <td><input type="text" id="percentage" name="percentage" value="<?php echo $daysOfWeek[$aNumber]["percentage"]; ?>"></td>
           <!-- <td><input type="text" id="ProductID" name="ProductID" value="<?php echo $daysOfWeek[$aNumber]["ProductID"]; ?>"></td> -->

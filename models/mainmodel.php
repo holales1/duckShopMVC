@@ -39,8 +39,18 @@ class mainModel extends Model{
         $_SESSION['message'] = "Product added.";
     }
 
-    function updateDuck($productID,$description,$price,$img){
+    function updateDuck($productID,$description,$price){
         $result = $this->db->insertRow("UPDATE products SET description='$description',price='$price',image='{$_FILES["imgfile"]["name"]}' WHERE ProductID='$productID");
+        if($result){
+            $_SESSION["message"]="Product updated";
+        }else{
+            $_SESSION["message"]="Product not updated";
+        }
+    }
+
+    function saveDuck($productID,$description,$price){
+        $result = $this->db->insertRow("INSERT INTO products (price, description, image)
+        VALUES ('$price', '$description', '{$_FILES["imgfile"]["name"]}')");
         if($result){
             $_SESSION["message"]="Product updated";
         }else{
@@ -51,5 +61,19 @@ class mainModel extends Model{
     function readDuckOferrs(){
         $product_array = $this->db->runQuery("SELECT * FROM product_of_the_day");
         return $product_array;
+    }
+
+    function saveProductDay($ProductIDSQL,$percentageSQL,$dayOfWeekSQL){
+        $result=$this->db->insertRow("UPDATE product_of_the_day SET percentage='$percentageSQL',ProductID='$ProductIDSQL' WHERE dayOfWeek='$dayOfWeekSQL'");
+        if($result){
+            $_SESSION["message"]="Product saved";
+        }else{
+            $_SESSION["message"]="Product not saved";
+        }
+    }
+
+    function getMaxProductID(){
+        $result=$this->db->runQuery("SELECT MAX(ProductID) FROM products");
+        return $result;
     }
 }
