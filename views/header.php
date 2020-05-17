@@ -31,6 +31,13 @@ if(session_status() == PHP_SESSION_NONE)
 				<li><a href="<?php echo constant('URL')?>news">News</a></li>
 				<li><a href="<?php echo constant('URL')?>login" class="material-icons shopCar">account_circle</a></li>
 				<li><a href="<?php echo constant('URL')?>shopCar" class="material-icons shopCar" >shopping_cart</a></li>
+				<?php
+                if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']==1  ){
+                ?>
+				<li><a href="<?php echo constant('URL')?>order" class="material-icons shopCar" >description</a></li>
+				<?php
+                }
+                ?>
 			</ul>
 		</nav><!-- / nav -->
 	</header><!-- / #main-header -->
