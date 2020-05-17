@@ -49,7 +49,7 @@
         if(isset($_SESSION["cart_item"]) && isset($_SESSION['isAdmin'])){
             if($_SESSION['isAdmin']==0){
     ?>
-    <form method="post" action="addOrder.php">
+    <form method="post" action="<?php echo constant('URL')?>shopCar/addOrder">
     
         <input type="submit" value="Order Product" class="addBtn">
     </form>

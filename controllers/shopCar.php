@@ -55,5 +55,29 @@ class ShopCar extends Controller{
         unset($_SESSION["cart_item"]);
         $this->function->redirect_to("shopCar");
     }
+
+    function addOrder(){
+        $fOrder=$this->model->getMaxOrderID();
+
+        if($fOrder[0]==null){
+            $fOrder[0]=1;
+        }else{
+            $number=$fOrder[0];
+            $fOrder[0]=$number["MAX(OrderID)"] + 1;
+        }
+
+        $date=date("Y-m-d");
+
+        $result=$this->model->insertOrder($fOrder,$date);
+
+        if($result){
+            unset($_SESSION["cart_item"]);
+            $_SESSION['message'] = "Order accepted.";
+        }else{
+            $_SESSION['message'] = "Order not accepted.";
+        }
+        $this->function->redirect_to("main");
+
+    }
 }
 ?>
