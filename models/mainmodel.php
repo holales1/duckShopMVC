@@ -11,6 +11,11 @@ class mainModel extends Model{
         return $product_array;
     }
 
+    public function readDuckCheap(){
+        $product_array_cheap = $this->db->runQuery("SELECT * FROM `cheap_products` WHERE isAvaliable=0 ORDER BY ProductID ASC ");
+        return $product_array_cheap;
+    }
+
     public function readDuckAdmin(){
         $product_array = $this->db->runQuery("SELECT * FROM products");
         return $product_array;

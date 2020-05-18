@@ -79,6 +79,8 @@
             }
             ?>
 
+    <div class="floatDiv">
+
         <div class="productTitle">Products</div>
         <?php
             if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin']==0  ){
@@ -159,6 +161,42 @@
         ?>
     </div>
 
+        <div class="floatDiv">
+            <div class="productTitle">Cheaper products</div>
+            <?php
+                if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin']==0  ){
+                    $product_array_cheap=$this->product_array_cheap;
+                    if (!empty($product_array_cheap)) { 
+                        foreach($product_array_cheap as $aNumber=> $value){
+                        
+            ?>
+            <div class="product-item">
+                <form method="post" action="<?php echo constant('URL')?>shopCar/addItem/<?php echo $product_array_cheap[$aNumber]["ProductID"]; ?>">
+                    <div class="product-image">
+                        <img src="<?php echo constant('URL')?>public/img/<?php echo $product_array_cheap[$aNumber]["image"]; ?>">
+                    </div>
+                    <div>
+                        <strong><?php echo $product_array_cheap[$aNumber]["description"]; ?></strong>
+                    </div>
+                    <div class="product-price"><?php echo $product_array_cheap[$aNumber]["price"]." DKK"; ?>
+                    </div>
+                    <div>
+                        <input type="hidden" value="<?php echo $product_array_cheap[$aNumber]["ProductID"]; ?>" id="productID"/>
+                        <input type="number" name="quantity" value="1" size="2" max="10"/>
+                        <input type="submit" value="Add to cart" class="addBtn" />
+                    </div>
+                </form>
+            </div>
+            <?php
+                    }
+                }
+            }
+            ?>
+        </div>
+    </div>
+
+
+    
 
 </body>
 </html>

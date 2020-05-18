@@ -115,6 +115,20 @@ nav ul li a:hover {
 	width: 50%;
 }
 
+.absoluteDiv{
+	position: absolute;
+}
+
+.relativeDiv{
+	position: relative;
+}
+
+.floatDiv{
+	
+	float:left; 
+	 
+}
+
 
 .product-item {	float:left;	background: #ffffff;margin:15px 10px;	padding:5px;border:#CCC 1px solid;border-radius:4px;}
 .product-item div{text-align:center;	margin:10px;}

@@ -5,6 +5,7 @@ class Main extends Controller{
     function __construct(){
         parent::__construct();
         $this->view->product_array=[];
+        $this->view->product_array_cheap=[];
         $this->view->product_array_admin=[];
         $this->view->product_of_the_day=[];
     }
@@ -15,6 +16,9 @@ class Main extends Controller{
 
         $product_array=$this->model->readDuck();
         $this->view->product_array = $product_array;
+
+        $product_array_cheap=$this->model->readDuckCheap();
+        $this->view->product_array_cheap = $product_array_cheap;
 
         $product_of_the_day=$this->model->readDuckOfTheDay();
         $this->view->product_of_the_day = $product_of_the_day;
