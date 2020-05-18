@@ -81,9 +81,12 @@
 
     <div class="floatDiv">
 
-        <div class="productTitle">Products</div>
+        
         <?php
             if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin']==0  ){
+                ?>
+                <div class="productTitle">Products</div>
+                <?php
                 $product_array=$this->product_array;
                 if (!empty($product_array)) { 
                     foreach($product_array as $aNumber=> $value){
