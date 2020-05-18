@@ -81,12 +81,9 @@
 
     <div class="floatDiv">
 
-        
+        <div class="productTitle">Products</div>
         <?php
             if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin']==0  ){
-                ?>
-                <div class="productTitle">Products</div>
-                <?php
                 $product_array=$this->product_array;
                 if (!empty($product_array)) { 
                     foreach($product_array as $aNumber=> $value){
@@ -165,10 +162,13 @@
     </div>
 
         <div class="floatDiv">
-            <div class="productTitle">Cheaper products</div>
+            
             <?php
                 if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin']==0  ){
                     $product_array_cheap=$this->product_array_cheap;
+                    ?>
+                    <div class="productTitle">Cheaper products</div>
+                    <?php
                     if (!empty($product_array_cheap)) { 
                         foreach($product_array_cheap as $aNumber=> $value){
                         
