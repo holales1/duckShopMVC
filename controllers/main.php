@@ -80,7 +80,7 @@ class Main extends Controller{
                     $_SESSION["message"]="can't upload: ". $_FILES['imgfile']['name']. " Exists";
                 }else{
                     move_uploaded_file($_FILES['imgfile']['tmp_name'],
-                        constant('PUBLIC_PATH')."img/".$_FILES['imgfile']['name']);
+                        constant('PUBLIC_PATH')."/img/".$_FILES['imgfile']['name']);
                     $this->model->updateDuck($productID,$description,$price,$img);
                     $this->function->redirect_to('main');
                 }
@@ -113,7 +113,7 @@ class Main extends Controller{
                     $_SESSION["message"]="can't upload: ". $_FILES['imgfile']['name']. " Exists";
                 }else{
                     move_uploaded_file($_FILES['imgfile']['tmp_name'],
-                        constant('PUBLIC_PATH')."img/".$_FILES['imgfile']['name']);
+                        constant('PUBLIC_PATH')."/img/".$_FILES['imgfile']['name']);
                     $this->model->saveDuck($productID,$description,$price);
                     $this->function->redirect_to('main');
                 }

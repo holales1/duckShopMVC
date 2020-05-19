@@ -5,7 +5,7 @@ if(!isset($_SESSION['UserID'])){
 }?>
 <link rel="stylesheet" type="text/css" href="public/css/style.css">
 <h1>Please login</h1>
-<form action="<?php echo constant('URL')?>login/loginUser/main/index" method="post">
+<form action="<?php echo constant('URL')?>login/loginUser" method="post">
 
 <div class="container">
 Email:
@@ -24,15 +24,13 @@ Password:
  
     
 
-<form action="http://localhost/duckShopMVC/login/registerPage">
+<form action="<?php echo constant('URL')?>login/registerPage">
     <input type="submit" class="register" value="Register">
 </form>
-<!--<a href= "<?php echo constant('URL')?>login/registerPage">Register</a>
-<br> -->
 
-<form action="http://localhost/duckShopMVC/login/logout">
+
+<form action="<?php echo constant('URL')?>login/logout">
     <input type="submit" class="logout" value="Logout">
 </form>
     
-<!--<a href="<?php echo constant('URL')?>login/logout">Log out</a>
-</div> -->
+

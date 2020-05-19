@@ -45,7 +45,7 @@ class mainModel extends Model{
     }
 
     function updateDuck($productID,$description,$price){
-        $result = $this->db->insertRow("UPDATE products SET description='$description',price='$price',image='{$_FILES["imgfile"]["name"]}' WHERE ProductID='$productID");
+        $result = $this->db->insertRow("UPDATE products SET description='$description',price='$price',image='{$_FILES["imgfile"]["name"]}' WHERE ProductID='$productID'");
         if($result){
             $_SESSION["message"]="Product updated";
         }else{
