@@ -5,5 +5,6 @@
     <input type='number' id='price' name='price' required ><br>
     <label for="fname">Image</label><br>
     <input type="file" name="imgfile" required >
-    <input type="submit" name="submit" value="Add new product">
+    <br>
+    <input type="submit" class="submit" name="submit" value="Add new product">
 </form>

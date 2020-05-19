@@ -1,10 +1,12 @@
+<link rel="stylesheet" type="text/css" href="public/css/style.css">
 <div id="shopping-cart">
-    <div class="heading">Shopping Cart <a id="emptyBtn" href="<?php echo constant('URL')?>shopCar/removeAllItem">Empty Cart</a></div>
+    <div class="container">Shopping Cart <a id="emptyBtn" href="<?php echo constant('URL')?>shopCar/removeAllItem"><br>Empty Cart</a></div>
     <?php
     //Reset total cost to do recalc
     if(isset($_SESSION["cart_item"])){
         $item_total = 0;
     ?>	
+    <div class="container">
     <table cellpadding="10" cellspacing="1">
         <tbody>
             <tr>
@@ -25,7 +27,7 @@
                             <td><?php echo $item["ProductID"]; ?></td>
                             <td><?php echo $item["quantity"]; ?></td>
                             <td><?php echo $item["price"]." DKK"; ?></td>
-                            <td><input type="submit" value="Remove Item" class="addBtn" /></td>
+                            <td><input type="submit" class="removeduck" value="Remove Item" class="addBtn" /></td>
                             </tr>
                         </form>
                             <?php
@@ -49,9 +51,13 @@
         if(isset($_SESSION["cart_item"]) && isset($_SESSION['isAdmin'])){
             if($_SESSION['isAdmin']==0){
     ?>
+     <br>
+    <br>
+    <br>
+   <div class="container">
     <form method="post" action="<?php echo constant('URL')?>shopCar/addOrder">
     
-        <input type="submit" value="Order Product" class="addBtn">
+        <input type="submit" class="orderproduct" value="Order Product" class="addBtn">
     </form>
     <?php
             }

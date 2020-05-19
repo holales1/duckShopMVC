@@ -1,3 +1,6 @@
+
+
+<link rel="stylesheet" type="text/css" href="public/css/style.css">
 <table cellpadding="10" cellspacing="1">
     <tbody>
         <tr>

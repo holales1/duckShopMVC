@@ -1,5 +1,7 @@
-<div >
-    <div class="column">
+<link rel="stylesheet" type="text/css" href="public/css/style.css">
+ 
+<div class="container">
+    
         <form method="post" action="<?php echo constant('URL')?>order" >
             <select id="users" name="users">
                 <?php
@@ -11,15 +13,17 @@
                     }
                     ?>
             </select>
-            <input type="submit" name="submit" value="Submit">
+            <input type="submit" class="submit" name="submit" value="Submit">
         </form>
     </div>
-    <div class="column">
+    
+    <div class="container">
         <table style="width:100%">
             <tr>
                 <th>Order ID</th>
                 <th>Date</th> 
             </tr>
+                
             <?php
             if(isset($this->orders_array)){      
                 $allOrders=$this->orders_array;;
@@ -29,7 +33,7 @@
                         <tr>
                             <td><?php echo $allOrders[$aNumber]["OrderID"]; ?></td>
                             <td><?php echo $allOrders[$aNumber]["orderDate"]; ?></td>
-                            <td><input type="submit" name="submit" value="Read order"></td>
+                            <td><input type="submit" class="readorder" name="submit" value="Read order"></td>
                         </tr>
                     </form>
                 <?php

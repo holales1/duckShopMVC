@@ -6,7 +6,8 @@
                 unset($_SESSION['message']);
             }
         ?>
-        <h2>About US</h2>
+        <link rel="stylesheet" type="text/css" href="public/css/style.css">
+        <h3>About US</h3>
         <div>
             <?php
                 $about_us = $this->aboutUs;
@@ -21,7 +22,7 @@
             ?>
         </div>
         <br>
-        <h2>Address</h2>
+        <h3>Address</h3>
         <div>
             <?php
             $Address=$about_us[0]['Address'];
@@ -34,7 +35,7 @@
             ?>
         </div>
         <br>
-        <h2>Phone number</h2>
+        <h3>Phone number</h3>
         <div>
             <?php
                 $phoneNumber=$about_us[0]['phoneNumber'];
@@ -48,7 +49,7 @@
             ?>
         </div>
         <br>
-        <h2>Open hour</h2>
+        <h3>Open hour</h3>
         <div>
             <?php
                 $openHour=$about_us[0]['openHour'];
@@ -62,7 +63,7 @@
         <div>
             <?php
             if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']==1  ){?>
-            <input type="submit" name="submit" value="Update information about company">
+            <input type="submit" class="update" name="submit" value="Update information about company">
             <?php echo "</form>";?>
             <?php }?>
         </div>

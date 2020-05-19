@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" type="text/css" href="public/css/style.css">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +22,9 @@
         $offer=$this->product_of_the_day;
         if(!empty($offer)){  
         ?>
+        <h6>
         <div class="productTitle">Daily special offer</div>
+        </h6>
             <?php    
                 $ProductID=$offer[0]["ProductID"];
                 $product_of_day = $offer;
@@ -46,7 +49,7 @@
                         ?>
                     </div>
                     <div>
-                        <input type="submit" value="Update" class="addBtn" />
+                        <input type="submit" class="update" value="Update" class="addBtn" />
                     </div>
                 </form>
                 <?php
@@ -68,7 +71,7 @@
                     </div>
                     <div>
                         <input type="text" name="quantity" value="1" size="2" />
-                        <input type="submit" value="Add to cart" class="addBtn" />
+                        <input type="submit" class="add" value="Add to cart" class="addBtn" />
                     </div>
                 </form>
                 <?php
@@ -102,7 +105,7 @@
                 <div>
                     <input type="hidden" value="<?php echo $product_array[$aNumber]["ProductID"]; ?>" id="productID"/>
                     <input type="number" name="quantity" value="1" size="2" max="10"/>
-                    <input type="submit" value="Add to cart" class="addBtn" />
+                    <input type="submit" class="add" value="Add to cart" class="addBtn" />
                 </div>
             </form>
         </div>
@@ -126,7 +129,7 @@
                 </div>
                 <div>
                     <input type="hidden" value="<?php echo $product_array[$aNumber]["ProductID"]; ?>" id="productID"/>
-                    <input type="submit" value="Update" class="addBtn" />
+                    <input type="submit" class="update" value="Update" class="addBtn" />
                 </div>
             </form>
             <div>
@@ -135,11 +138,11 @@
                     <?php
                         if($product_array[$aNumber]["isAvaliable"]=="0"){
                     ?>
-                            <input type="submit" value="Delete" class="addBtn" />
+                            <input type="submit" class="delete" value="Delete" class="addBtn" />
                     <?php
                         }else{
                     ?>
-                            <input type="submit" value="Add" class="addBtn" />
+                            <input type="submit" class="submit" value="Add" class="addBtn" />
                     <?php
                         }
                     ?>
@@ -150,9 +153,9 @@
                 }
             }
         ?>
-        <div>
+        <div class="container">
             <form method="post" action="<?php echo constant('URL')?>main/newProductPage">
-                <input type="submit" value="Add new product" class="addBtn" />
+                <input type="submit" class="submit" value="Add new product" class="addBtn" />
             </form>
         </div>
         
