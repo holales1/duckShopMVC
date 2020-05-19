@@ -17,59 +17,62 @@
     <br>
 
     <?php
-    $latestNews = $this->news;
-    foreach($latestNews as $aNumber=> $value){
-    ?>
+    if(isset($this->news)){
 
-    <div class="news">
+        $latestNews = $this->news;
+        foreach($latestNews as $aNumber=> $value){
+        ?>
 
-        <h2>
-            <a>  
+        <div class="news">
+
+            <h2>
+                <a>  
+                    <?php
+                    
+                    
+                    $title=$latestNews[$aNumber]['title'];
+                    if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']==1  ){
+                        
+                        echo "<form action=".constant('URL')."news/updateNews id='updateNews' method='post'>";
+                        echo "<input type='text' id='title' name='title' value='$title'><br>";
+                        echo "<input type='hidden' id='NewsID' name='NewsID' value='{$latestNews[$aNumber]['NewsID']}'><br>";
+                    }else{ 
+                        echo $latestNews[$aNumber]['title']; 
+                        
+                    }
+
+                    ?>
+            
+                </a>
+                <hr>
+            </h2>
+
+            <p>
                 <?php
-                
-                
-                $title=$latestNews[$aNumber]['title'];
+                $description=$latestNews[$aNumber]['description'];
                 if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']==1  ){
-                    
-                    echo "<form action=".constant('URL')."news/updateNews id='updateNews' method='post'>";
-                    echo "<input type='text' id='title' name='title' value='$title'><br>";
-                    echo "<input type='hidden' id='NewsID' name='NewsID' value='{$latestNews[$aNumber]['NewsID']}'><br>";
+                    echo "<input type='text' id='description' name='description' value='$description'><br>";
                 }else{ 
-                    echo $latestNews[$aNumber]['title']; 
-                    
+                    echo $latestNews[$aNumber]['description']; 
                 }
-
+                
                 ?>
-        
-            </a>
-            <hr>
-        </h2>
-
-        <p>
+            </p>
+            <br>
             <?php
-            $description=$latestNews[$aNumber]['description'];
-            if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']==1  ){
-                echo "<input type='text' id='description' name='description' value='$description'><br>";
-            }else{ 
-                echo $latestNews[$aNumber]['description']; 
-            }
-            
-            ?>
-        </p>
+            if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']==1  ){?>
+            <input type="submit" class="submit" name="submit"  value="Update News">
+            <?php echo "</form>";?>
+            <?php }?>
+        
+
+                
+        </div>
         <br>
+        <br>
+
         <?php
-        if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']==1  ){?>
-        <input type="submit" class="submit" name="submit"  value="Update News">
-        <?php echo "</form>";?>
-        <?php }?>
-    
-
-            
-    </div>
-    <br>
-    <br>
-
-    <?php
+        }
     }
     ?>
 </div>
