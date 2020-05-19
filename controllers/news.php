@@ -21,7 +21,7 @@
     }
     
     public function addNewsPage(){
-        $this->view->render('main/addNews');
+        $this->view->render('news/addNews');
         $newsID=$this->model->getMaxNewsID()[0]["MAX(NewsID)"] +1;
         $title=$_POST['title'];
         $description=$_POST['description'];

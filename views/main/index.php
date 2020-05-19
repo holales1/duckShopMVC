@@ -189,7 +189,7 @@
                     <div>
                         <input type="hidden" value="<?php echo $product_array_cheap[$aNumber]["ProductID"]; ?>" id="productID"/>
                         <input type="number" name="quantity" value="1" size="2" max="10"/>
-                        <input type="submit" value="Add to cart" class="addBtn" />
+                        <input type="submit" class="add" value="Add to cart" class="addBtn" />
                     </div>
                 </form>
             </div>

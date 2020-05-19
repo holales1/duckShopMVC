@@ -42,5 +42,6 @@ if(session_status() == PHP_SESSION_NONE)
 			</ul>
 		</nav><!-- / nav -->
 	</header><!-- / #main-header -->
+
 </body>
 </html>

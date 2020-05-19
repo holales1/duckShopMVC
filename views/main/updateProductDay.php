@@ -33,7 +33,7 @@
             }
             ?>
           </td>
-          <td><input type="submit" name="submit" value="Submit"></td>
+          <td><input type="submit" class="submit" name="submit" value="Submit"></td>
         </form>
     </tr>
     <?php }}?>
