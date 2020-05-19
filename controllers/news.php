@@ -16,18 +16,28 @@
     function updateNews(){
 
         $arrayPost=$_POST;
-        $this->model->updateNews($arrayPost);
+        $result=$this->model->updateNews($arrayPost);
+        if($result){
+            $_SESSION['message']="News updated";
+        }else{
+            $_SESSION['message']="News not updated";
+        }
         $this->function->redirect_to('news');
     }
     
     public function addNewsPage(){
         $this->view->render('news/addNews');
-        $newsID=$this->model->getMaxNewsID()[0]["MAX(NewsID)"] +1;
-        $title=$_POST['title'];
-        $description=$_POST['description'];
-        $this->model->saveNews($newsID,$title,$description);
-        $this->function->redirect_to('main');
-       
+    }
+
+    public function createNews(){
+        $arrayPost=$_POST;
+        $result=$this->model->createNews($arrayPost);
+        if($result){
+            $_SESSION['message']="New created";
+        }else{
+            $_SESSION['message']="New not created";
+        }
+        $this->function->redirect_to('news');
     }
 
 

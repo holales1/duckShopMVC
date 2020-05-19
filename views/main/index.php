@@ -179,7 +179,7 @@
             <div class="product-item">
                 <form method="post" action="<?php echo constant('URL')?>shopCar/addItem/<?php echo $product_array_cheap[$aNumber]["ProductID"]; ?>">
                     <div class="product-image">
-                        <img src="<?php echo constant('URL')?>public/img/<?php echo $product_array_cheap[$aNumber]["image"]; ?>">
+                        <img  src="<?php echo constant('URL')?>public/img/<?php echo $product_array_cheap[$aNumber]["image"]; ?>">
                     </div>
                     <div>
                         <strong><?php echo $product_array_cheap[$aNumber]["description"]; ?></strong>
