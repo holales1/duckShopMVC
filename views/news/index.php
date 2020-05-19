@@ -75,5 +75,14 @@
         }
     }
     ?>
+
+    <?php
+        if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']==1  ){?>
+        <div class="wrapper">
+            <form method="post" action="<?php echo constant('URL')?>news/addNewsPage">
+                <input type="submit" class="submit" value="Add news" class="addBtn" />
+            </form>
+        </div>
+    <?php }?>
 </div>
         
