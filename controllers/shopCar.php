@@ -17,7 +17,7 @@ class ShopCar extends Controller{
             'ProductID'=>$productByCode[0]["ProductID"],
             'image'=>$productByCode[0]["image"],
             'quantity'=>$_POST["quantity"],
-            'price'=>$productByCode[0]["price"]));
+            'price'=>$_POST["price"]));
         
         if(!empty($_SESSION["cart_item"])) {
             if(in_array($productByCode[0]["ProductID"],array_keys($_SESSION["cart_item"]))) {
@@ -30,7 +30,7 @@ class ShopCar extends Controller{
                     }
                 }
             } else {
-                $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],$itemArray);
+                $_SESSION["cart_item"] = $_SESSION["cart_item"]+$itemArray;
             }
         } else {
             $_SESSION["cart_item"] = $itemArray;

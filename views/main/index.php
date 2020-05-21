@@ -44,7 +44,7 @@
                     <div class="product-price">
                     <?php
                         $price=intval($product_of_day[0]["price"]);
-                        $finalPrice=$price/100*(100-intval($offer[0]["percentage"]));
+                        $finalPrice=$price/100*(100-intval($product_of_day[0]["percentage"]));
                         echo $finalPrice.".00 DKK"; 
                         ?>
                     </div>
@@ -55,7 +55,7 @@
                 <?php
                 }else{
                 ?>
-                <form method="post" action="shopCar.php?action=add&ProductID=<?php echo $product_of_day[0]["ProductID"]; ?>">
+                <form method="post" action="<?php echo constant('URL')?>shopCar/addItem/<?php echo $product_of_day[0]["ProductID"]; ?>">
                     <div class="product-image">
                         <img src="<?php echo constant('URL')?>public/img/<?php echo $product_of_day[0]["image"]; ?>">
                     </div>
@@ -65,11 +65,12 @@
                     <div class="product-price">
                     <?php
                         $price=intval($product_of_day[0]["price"]);
-                        $finalPrice=$price/100*(100-intval($offer[0]["percentage"]));
+                        $finalPrice=$price/100*(100-intval($product_of_day[0]["percentage"]));
                         echo $finalPrice.".00 DKK"; 
                         ?>
                     </div>
                     <div>
+                        <input type="hidden" value="<?php echo $finalPrice.".00" ?>" name="price"/>
                         <input type="text" name="quantity" value="1" size="2" />
                         <input type="submit" class="add" value="Add to cart" class="addBtn" />
                     </div>
@@ -90,6 +91,10 @@
                 $product_array=$this->product_array;
                 if (!empty($product_array)) { 
                     foreach($product_array as $aNumber=> $value){
+                        if($product_of_day[0]["ProductID"]==$product_array[$aNumber]["ProductID"]){
+                            $product_array[$aNumber]["price"]=$finalPrice;
+                            $product_array[$aNumber]["price"]=$product_array[$aNumber]["price"].".00";
+                        }
                     
         ?>
         <div class="product-item">
@@ -103,7 +108,7 @@
                 <div class="product-price"><?php echo $product_array[$aNumber]["price"]." DKK"; ?>
                 </div>
                 <div>
-                    <input type="hidden" value="<?php echo $product_array[$aNumber]["ProductID"]; ?>" id="productID"/>
+                    <input type="hidden" value="<?php echo $product_array[$aNumber]["price"]; ?>" name="price"/>
                     <input type="number" name="quantity" value="1" size="2" max="10"/>
                     <input type="submit" class="add" value="Add to cart" class="addBtn" />
                 </div>

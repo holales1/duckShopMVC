@@ -10,10 +10,7 @@
 
 
 <div class="container">
-
-        
     <h1>Latest news</h1>
-    
     <br>
 
     <?php
